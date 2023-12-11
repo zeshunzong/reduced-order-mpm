@@ -1,205 +1,235 @@
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="description" content="Neural Stress Field for Reduced-order Elastoplasticity and Fracture">
-		<meta name="author" content="Zeshun Zong">
-		<title>IPC</title>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-		<style>
-			p {font:10pt Arial}
-			.heading {font-family: 'Open Sans', serif; font-size: 20pt}
-			.subheading {font-family: 'Open Sans', serif; font-size: 11pt}
-			img {-webkit-box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.2);
-			box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.2); -webkit-border-radius: 6px;
-			border-radius: 6px;}
-			.main {width:1000px; background-color:white; margin-top: 0px; margin-left: auto; margin-right:auto;  -webkit-border-radius: 10px;
-			border-radius: 10px;}
-			.regularHeader {font:16pt Playfair Display; margin-top:20px}
-			td {padding-top: 5px; padding-bottom: 5px;}
-			.text {font-family: 'Open Sans', sans-serif; font-size: 11pt; text-align:justify; margin-left:20px; margin-right:20px}
-			a {color:black; text-decoration:none}
-			a:hover  {color:green; text-decoration:underline}
-		</style>
-		<script src="../includeHTML.js" ></script>
-	</head>
-	<body bgcolor="#dedede">
-		<div class="main">
-			<div style="margin: 0pt 15pt 25pt 15pt; padding-top:10px">
-				<div class="heading" style="text-align:center">Neural Stress Fields for Reduced-order Elastoplasticity and Fracture</div>
-				<br />
-				<div class="subheading" style="margin-top:-8pt;text-align:center;font-size:13pt">
-					<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Zeshun Zong</a><sup>1</sup>,&nbsp;
-					<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Xuan Li</a><sup>1</sup>,&nbsp;
-					<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Minchen Li</a><sup>2</sup>,&nbsp;
-					<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Maurizio M. Chiaramonte</a><sup>3</sup>,&nbsp;
-					<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Wojciech Matusik</a><sup>4</sup>,&nbsp;
-					<br />
-					<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Eitan Grinspun</a><sup>5</sup>,&nbsp;
-					<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Kevin Carlberg</a><sup>3</sup>,&nbsp;
-					<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Chenfanfu Jiang</a><sup>1</sup>,&nbsp;
-					<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Peter Yichen Chen</a><sup>4</sup>,&nbsp;
-					<br />
-					<div style="margin-top:6pt;"><sup>1</sup>UCLA,&nbsp; <sup>2</sup>CMU,&nbsp;<sup>3</sup>Meta Reality Labs Research,&nbsp;<sup>4</sup>MIT CSAIL,&nbsp; <sup>5</sup>University of Toronto</text></div>
-					<div class="subheading" style="margin-top:8pt;"><span style="font-style: italic">SIGGRAPH Asia, 2023</span></div>
-				</div>
-				<div align="center" style="clear:none; margin-top:15px">
-					<img src="file/IPC-teaser.jpg" style="padding:3pt; width:99%">
-					<div class="text" style="text-align:left; font-size:10pt; margin-top:10pt">
-						<p class="text">
-							<b>Squeeze out:</b> Incremental Potential Contact (IPC) enables high-rate time stepping, here with h = 0.01s, of extreme nonlinear elastodynamics with
-							contact that is intersection- and inversion-free at all time steps, irrespective of the degree of compression and contact. Here a plate compresses and then
-							forces a collection of complex soft elastic FE models (181K tetrahedra in total, with a neo-Hookean material) through a thin, codimensional obstacle tube. The
-							models are then compressed entirely together forming a tight mush to fit through the gap and then once through they cleanly separate into a stable pile.
-						</p>
-					</div>
-				</div>
-				<div class="regularHeader" style="margin-bottom:15px;text-align:left;">Paper</div>
-				<div class="text">
-					<p class="text">
-						<b><a href="file/IPC-paper-fullRes.pdf" target="_blank"> Paper (PDF) </a></b>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<b><a href="file/IPC-paper-350ppi.pdf" target="_blank"> Low res (PDF) </a></b>
-					</p>
-				</div>
-				<div class="regularHeader" style="text-align:left;">Abstract</div>
-				<div class="text" align="center">
-					<p class="text">
-						Contacts weave through every aspect of our physical world, from daily
-						household chores to acts of nature. Modeling and predictive computation of
-						these phenomena for solid mechanics is important to every discipline concerned with the motion of mechanical systems, including engineering and
-						animation. Nevertheless, efficiently time-stepping accurate and consistent
-						simulations of real-world contacting elastica remains an outstanding computational challenge. To model the complex interaction of deforming solids
-						in contact we propose Incremental Potential Contact (IPC) – a new model
-						and algorithm for variationally solving implicitly time-stepped nonlinear
-						elastodynamics. IPC maintains an intersection- and inversion-free trajectory
-						regardless of material parameters, time step sizes, impact velocities, severity
-						of deformation, or boundary conditions enforced.
-					</p>
-					<p class="text">
-						Constructed with a custom nonlinear solver, IPC enables efficient resolution of time-stepping problems with separate, user-exposed accuracy
-						tolerances that allow independent specification of the physical accuracy of
-						the dynamics and the geometric accuracy of surface-to-surface conformation.
-						This enables users to decouple, as needed per application, desired accuracies
-						for a simulation’s dynamics and geometry.
-					</p>
-					<p class="text">
-						The resulting time stepper solves contact problems that are intersectionfree (and thus robust), inversion-free, efficient (at speeds comparable to or
-						faster than available methods that lack both convergence and feasibility),
-						and accurate (solved to user-specified accuracies). To our knowledge this
-						is the first implicit time-stepping method, across both the engineering and
-						graphics literature that can consistently enforce these guarantees as we vary
-						simulation parameters.
-					</p>
-					<p class="text">
-						In an extensive comparison of available simulation methods, research
-						libraries and commercial codes we confirm that available engineering and
-						computer graphics methods, while each succeeding admirably in custom-tuned regimes, often fail with instabilities, egregious constraint violations
-						and/or inaccurate and implausible solutions, as we vary input materials,
-						contact numbers and time step. We also exercise IPC across a wide range
-						of existing and new benchmark tests and demonstrate its accurate solution
-						over a broad sweep of reasonable time-step sizes and beyond (up to h=2s)
-						across challenging large-deformation, large-contact stress-test scenarios
-						with meshes composed of up to 2.3M tetrahedra and processing up to 498K
-						contacts per time step. For applications requiring high-accuracy we demonstrate tight convergence on all measures. While, for applications requiring
-						lower accuracies, e.g. animation, we confirm IPC can ensure feasibility and
-						plausibility even when specified tolerances are lowered for efficiency.
-					</p>
-				</div>
-				<div class="regularHeader" style="margin-bottom:15px;text-align:left;">Video</div>
-				<div class="text" align="center">
-					<p class="text">
-						<b><a href="https://www.bilibili.com/video/BV1964y1275C/" target="_blank">Main video (MP4, 126 MB)</a></b>
-						<br/> <br/>
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/y96jk-eUCgI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="-webkit-box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.2)"></iframe>
-						<br/> <br/> <br/>
-						<b><a href="file/IPC-supplemental-video.mp4" target="_blank">Supplemental Video (MP4, 64.7 MB)</a></b>
-						<br/> <br/>
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/sX5qQEDvHVU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="-webkit-box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.2)"></iframe>
-					</p>
-				</div>
-				<div class="regularHeader" style="margin-bottom:15px;text-align:left;">Source Code and Data</div>
-				<div class="text">
-					<p class="text">
-						<b><a href="https://github.com/ipc-sim/IPC" target="_blank">Codebase</a></b>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<b><a href="https://github.com/ipc-sim/ipc-toolkit" target="_blank">Toolkit</a></b>
-					</p>
-				</div>
-				<div class="regularHeader" style="margin-bottom:15px;text-align:left;">BibTex</div>
-				<div class="text">
-					<p class="text">
-						@article{Li2020IPC,<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;author  = {Minchen Li and Zachary Ferguson and Teseo Schneider and Timothy Langlois and<br />
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Denis Zorin and Daniele Panozzo and Chenfanfu Jiang and Danny M. Kaufman},<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;title   = {Incremental Potential Contact: Intersection- and Inversion-free Large Deformation Dynamics},<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;journal = {ACM Trans. Graph. (SIGGRAPH)},<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;year    = {2020},<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;volume = {39},<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;number = {4},<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;articleno = {49}<br/>
-						}
-					</p>
-				</div>
-				<div class="regularHeader" style="margin-bottom:15px;text-align:left;">Supplemental Documents</div>
-				<div class="text">
-					<p class="text">
-						<b><a href="file/IPC-supplement-A-technical.pdf" target="_blank">Supplement A: Technical Details (PDF) </a></b> <br/>
-						<b><a href="file/IPC-supplement-B-comparisons.pdf" target="_blank">Supplement B: Comparison Details (PDF) </a></b><br/>
-						<b><a href="file/IPC-supplement-C-statistics.pdf" target="_blank">Supplement C: Statistics (PDF) </a></b><br/>
-					</p>
-				</div>
 
-				<div class="regularHeader" style="margin-bottom:15px;text-align:left;">Results</div>
-				<div align="center" style="clear:none; margin-top:15px">
-					<img src="file/IPC-golf.jpg" style="padding:3pt; width:89%">
-					<div class="text" style="text-align:left; font-size:10pt; margin-top:10pt">
-						<p class="text">
-							<b>High-speed impact test:</b> Top: we show key frames from a highspeed
-							video capture of a foam practice ball fired at a fixed plate. Matching
-							reported material properties (0.04m diameter, E = 107Pa, ν = 0.45, ρ =
-							1150kg/m3) and firing speed (v0 = 67m/s), we apply IPC to simulate the
-							set-up with Newmark time stepping at h = 2e−5s to capture the highfrequency
-							behaviors. Middle and bottom: IPC-simulated frames at times
-							corresponding to the video frames showing respectively, visualization of the
-							simulated velocity magnitudes (middle) and geometry (bottom).
-						</p>
-					</div>
-				</div>
-				<br />
-				<div align="center" style="clear:none; margin-top:15px">
-					<img src="file/IPC-squishyBall.jpg" style="padding:3pt; width:89%">
-					<div class="text" style="text-align:left; font-size:10pt; margin-top:10pt">
-						<p class="text">
-							<b>Squishy ball scaling test:</b> Simulated by IPC, an elastic squishy ball toy
-							model (688K nodes, 2.3M tets) is thrown at a glass wall. The left three frames
-							show side views before, at, and after the moment of maximal compression
-							during impact. The right-most frame then shows the view behind the glass
-							during the moment of maximal compression, highlighting how all of the
-							toy’s intricately intertwined tendrils remain intersection free.
-						</p>
-					</div>
-				</div>
-				<br />
-				<div align="center" style="clear:none; margin-top:15px">
-					<img src="file/IPC-codimRoller.jpg" style="padding:3pt; width:89%">
-					<div class="text" style="text-align:left; font-size:10pt; margin-top:10pt">
-						<p class="text">
-							<b>Codimensional collision tests:</b> Here we simulate collisions with codimensional moving obstacles using only the mesh edge segments (left) or even just the mesh vertices (right) for the rotating roller. For these extremely
-							challenging tests IPC continues robust simulation exhibiting tight compliant
-							shapes in contact regions pressed by the sharp obstacles.
-						</p>
-					</div>
-				</div>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="description" content="Neural Stress Field for Reduced-order Elastoplasticity and Fracture">
+	<meta name="author" content="Zeshun Zong">
+	<title>IPC</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<style>
+		p {
+			font: 10pt Arial
+		}
 
-				<div id="related" class="regularHeader" style="margin-bottom:15px;text-align:left;">Related Projects</div>
-				<div class="text">
-					<div w3-include-html="../related.html"></div>
-				</div>
-				<br>
+		.heading {
+			font-family: 'Open Sans', serif;
+			font-size: 20pt
+		}
+
+		.subheading {
+			font-family: 'Open Sans', serif;
+			font-size: 11pt
+		}
+
+		img {
+			-webkit-box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.2);
+			box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.2);
+			-webkit-border-radius: 6px;
+			border-radius: 6px;
+		}
+
+		.main {
+			width: 1000px;
+			background-color: white;
+			margin-top: 0px;
+			margin-left: auto;
+			margin-right: auto;
+			-webkit-border-radius: 10px;
+			border-radius: 10px;
+		}
+
+		.regularHeader {
+			font: 16pt Playfair Display;
+			margin-top: 20px
+		}
+
+		td {
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+
+		.text {
+			font-family: 'Open Sans', sans-serif;
+			font-size: 11pt;
+			text-align: justify;
+			margin-left: 20px;
+			margin-right: 20px
+		}
+
+		a {
+			color: black;
+			text-decoration: none
+		}
+
+		a:hover {
+			color: green;
+			text-decoration: underline
+		}
+	</style>
+	<script src="../includeHTML.js"></script>
+</head>
+
+<body bgcolor="#dedede">
+	<div class="main">
+		<div style="margin: 0pt 15pt 25pt 15pt; padding-top:10px">
+			<div class="heading" style="text-align:center">Neural Stress Fields for Reduced-order Elastoplasticity and
+				Fracture</div>
+			<br />
+			<div class="subheading" style="margin-top:-8pt;text-align:center;font-size:13pt">
+				<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Zeshun Zong</a><sup>1</sup>,&nbsp;
+				<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Xuan Li</a><sup>1</sup>,&nbsp;
+				<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Minchen Li</a><sup>2</sup>,&nbsp;
+				<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Maurizio M.
+					Chiaramonte</a><sup>3</sup>,&nbsp;
+				<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Wojciech Matusik</a><sup>4</sup>,&nbsp;
+				<br />
+				<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Eitan Grinspun</a><sup>5</sup>,&nbsp;
+				<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Kevin Carlberg</a><sup>3</sup>,&nbsp;
+				<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Chenfanfu Jiang</a><sup>1</sup>,&nbsp;
+				<a href="http://www.seas.upenn.edu/~minchenl/" target="_blank">Peter Yichen Chen</a><sup>4&nbsp;
+					<br />
+					<div style="margin-top:6pt;"><sup>1</sup>UCLA,&nbsp; <sup>2</sup>CMU,&nbsp;<sup>3</sup>Meta Reality
+						Labs Research,&nbsp;<sup>4</sup>MIT CSAIL,&nbsp; <sup>5</sup>University of Toronto</text></div>
+					<div class="subheading" style="margin-top:8pt;"><span style="font-style: italic">SIGGRAPH Asia,
+							2023</span></div>
 			</div>
+			<div align="center" style="clear:none; margin-top:15px">
+				<img src="figures/cake_teaser.jpg" style="padding:3pt; width:99%">
+				<div class="text" style="text-align:left; font-size:10pt; margin-top:10pt">
+					<p class="text">
+						</b> Our reduced-order model accurately simulates the cutting of a chocolate cake at various
+						angles by time-stepping in a latent space of only dimension 𝑟 = 6. The original full-order
+						simulation employs 200, 000 particles. Courtesy of dimension reduction, our approach is 10.2×
+						faster than the full-order simulation.
+					</p>
+				</div>
+			</div>
+			<div class="regularHeader" style="margin-bottom:15px;text-align:left;">Paper</div>
+			<div class="text">
+				<p class="text">
+					<b><a href="https://drive.google.com/uc?export=view&id=1Lu9n_LXM5ztCNIrepHJj2wSa52OykhDA" target="_blank"> Paper (PDF) </a></b>
+				</p>
+			</div>
+			<div class="regularHeader" style="text-align:left;">Abstract</div>
+			<div class="text" align="center">
+				<p class="text">
+					We propose a hybrid neural network and physics framework for reduced-order modeling of
+					elastoplasticity and fracture. State-of-the-art scientific computing models like the Material Point
+					Method (MPM) faithfully simulate large-deformation elastoplasticity and fracture mechanics. However,
+					their long runtime and large memory consumption render them unsuitable for applications constrained
+					by computation time and memory usage, e.g., virtual reality. To overcome these barriers, we propose
+					a reduced-order framework. Our key innovation is training a low-dimensional manifold for the
+					Kirchhoff stress field via an implicit neural representation. This low-dimensional neural stress
+					field (NSF) enables efficient evaluations of stress values and, correspondingly, internal forces at
+					arbitrary spatial locations. In addition, we also train neural deformation and affine fields to
+					build low-dimensional manifolds for the deformation and affine momentum fields. These neural stress,
+					deformation, and affine fields share the same low-dimensional latent space, which uniquely embeds
+					the high-dimensional simulation state. After training, we run new simulations by evolving in this
+					single latent space, which drastically reduces the computation time and memory consumption. Our
+					general continuum-mechanics-based reduced-order framework is applicable to any phenomena governed by
+					the elastodynamics equation. To showcase the versatility of our framework, we simulate a wide range
+					of material behaviors, including elastica, sand, metal, non-Newtonian fluids, fracture, contact, and
+					collision. We demonstrate dimension reduction by up to 100,000x and time savings by up to
+					10x.
+				</p>
+			</div>
+			<div class="regularHeader" style="margin-bottom:15px;text-align:left;">Video</div>
+			<div class="text" align="center">
+				<p class="text">
+					<b><a href="https://www.bilibili.com/video/BV1964y1275C/" target="_blank">Main video (MP4, 126
+							MB)</a></b>
+					<br /> <br />
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/y96jk-eUCgI" frameborder="0"
+						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+						style="-webkit-box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.2)"></iframe>
+					<br /> <br /> <br />
+					<b><a href="file/IPC-supplemental-video.mp4" target="_blank">Supplemental Video (MP4, 64.7
+							MB)</a></b>
+					<br /> <br />
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/sX5qQEDvHVU" frameborder="0"
+						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+						style="-webkit-box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.2)"></iframe>
+				</p>
+			</div>
+			<div class="regularHeader" style="margin-bottom:15px;text-align:left;">Source Code and Data</div>
+			<div class="text">
+				<p class="text">
+					<b><a href="https://github.com/ipc-sim/IPC" target="_blank">Codebase</a></b>
+				</p>
+			</div>
+			<div class="regularHeader" style="margin-bottom:15px;text-align:left;">BibTex</div>
+			<div class="text">
+				<p class="text">
+					@article{zong2023neural,<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;author = {Zong, Zeshun and Li, Xuan and Li, Minchen and Chiaramonte, Maurizio M and Matusik, Wojciech and Grinspun, Eitan and Carlberg, Kevin and Jiang, Chenfanfu and Chen, Peter Yichen},<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;title = {Neural Stress Fields for Reduced-order Elastoplasticity and Fracture},<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2310.17790},<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;year = {2023},<br />
+					}
+				</p>
+			</div>
+			<div class="regularHeader" style="margin-bottom:15px;text-align:left;">Supplemental Documents</div>
+			<div class="text">
+				<p class="text">
+					<b><a href="file/IPC-supplement-A-technical.pdf" target="_blank">Supplement A: Technical Details
+							(PDF) </a></b> <br />
+				</p>
+			</div>
+
+			<div class="regularHeader" style="margin-bottom:15px;text-align:left;">Results</div>
+			<div align="center" style="clear:none; margin-top:15px">
+				<img src="file/IPC-golf.jpg" style="padding:3pt; width:89%">
+				<div class="text" style="text-align:left; font-size:10pt; margin-top:10pt">
+					<p class="text">
+						<b>High-speed impact test:</b> Top: we show key frames from a highspeed
+						video capture of a foam practice ball fired at a fixed plate. Matching
+						reported material properties (0.04m diameter, E = 107Pa, ν = 0.45, ρ =
+						1150kg/m3) and firing speed (v0 = 67m/s), we apply IPC to simulate the
+						set-up with Newmark time stepping at h = 2e−5s to capture the highfrequency
+						behaviors. Middle and bottom: IPC-simulated frames at times
+						corresponding to the video frames showing respectively, visualization of the
+						simulated velocity magnitudes (middle) and geometry (bottom).
+					</p>
+				</div>
+			</div>
+			<br />
+			<div align="center" style="clear:none; margin-top:15px">
+				<img src="file/IPC-squishyBall.jpg" style="padding:3pt; width:89%">
+				<div class="text" style="text-align:left; font-size:10pt; margin-top:10pt">
+					<p class="text">
+						<b>Squishy ball scaling test:</b> Simulated by IPC, an elastic squishy ball toy
+						model (688K nodes, 2.3M tets) is thrown at a glass wall. The left three frames
+						show side views before, at, and after the moment of maximal compression
+						during impact. The right-most frame then shows the view behind the glass
+						during the moment of maximal compression, highlighting how all of the
+						toy’s intricately intertwined tendrils remain intersection free.
+					</p>
+				</div>
+			</div>
+			<br />
+			<div align="center" style="clear:none; margin-top:15px">
+				<img src="file/IPC-codimRoller.jpg" style="padding:3pt; width:89%">
+				<div class="text" style="text-align:left; font-size:10pt; margin-top:10pt">
+					<p class="text">
+						<b>Codimensional collision tests:</b> Here we simulate collisions with codimensional moving
+						obstacles using only the mesh edge segments (left) or even just the mesh vertices (right) for
+						the rotating roller. For these extremely
+						challenging tests IPC continues robust simulation exhibiting tight compliant
+						shapes in contact regions pressed by the sharp obstacles.
+					</p>
+				</div>
+			</div>
+
+			<div id="related" class="regularHeader" style="margin-bottom:15px;text-align:left;">Related Projects</div>
+			<div class="text">
+				<div w3-include-html="../related.html"></div>
+			</div>
+			<br>
 		</div>
-		<script>
-			includeHTML();
-		</script>
-	</body>
+	</div>
+	<script>
+		includeHTML();
+	</script>
+</body>
+
 </html>
